@@ -1,0 +1,39 @@
+﻿@model APIListGames
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div style="visibility: hidden">@(ViewBag.counter = 1) </div>
+
+
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr">
+
+    @foreach (GameFromList game in Model.results)
+    {
+        // Can wrap this in an a tag to make it clickable to go to the game details
+        <div style="display: grid; grid-template-columns: 1fr 1fr">
+
+            <div>@game.name</div>
+
+            <img src="@game.background_image" style="max-height: 100px; max-width: 100px; grid-row: span 4" />
+            <div>Id: @game.id</div>
+
+
+            <div>Rating: @game.rating</div>
+
+            <div>Number: @ViewBag.counter</div>
+        <div style="visibility: hidden">@(ViewBag.counter += 1) </div>
+        </div>
+
+
+
+    }
+
+
+</div>
+
