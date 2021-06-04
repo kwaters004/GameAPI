@@ -1,0 +1,27 @@
+﻿@model GenreList
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    a{
+        color: black;
+        font-weight: bold;
+    }
+</style>
+
+
+<h1>Genres</h1>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; grid-gap: 5px">
+    @foreach (Genre genre in Model.results)
+    {
+        // link to list of top 25
+        <a href="/genre/toppage/@genre.id" style="background-color: lightgrey; display: grid; grid-template-columns: 1fr; border-radius: 10px;">
+            <img src="@genre.image_background" style="max-height: 100px; justify-self: center; margin: 5px;" />
+            <div style="margin-left: 5%">@genre.name</div>
+        </a>
+    }
+
+</div>
+

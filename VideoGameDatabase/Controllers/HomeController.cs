@@ -34,6 +34,18 @@ namespace VideoGameDatabase.Controllers
             return View(theList);
         }
 
+        public async Task<IActionResult> GamePage(int id)
+        {
+            GameFromAPI game = await GameDetailsAPI.GetGame(id);
+            return View(game);
+        }
+
+        public async Task<IActionResult> NewReleases()
+        {
+            APIListGames games = await GameDetailsAPI.GetNewReleases();
+            return View(games);
+        }
+
         public IActionResult Privacy()
         {
             return View();

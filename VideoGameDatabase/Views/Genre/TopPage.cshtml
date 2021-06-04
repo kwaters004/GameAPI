@@ -1,0 +1,38 @@
+﻿@model APIListGames
+@{
+    ViewData["Title"] = "TopPage";
+}
+
+<style>
+    a > div {
+        color: black;
+    }
+</style>
+
+<h1>Top 25 Game in @ViewBag.name</h1>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 10px">
+
+    @foreach (GameFromList game in Model.results)
+    {
+        <a href="/home/gamepage/@game.id" style="display: grid; grid-template-columns: 1fr 2fr; background-color: lightgrey; padding: 10px">
+            <div style="font-weight: bold; font: small-caps">@game.name</div>
+            <div><b>Rating:</b><br /> @game.rating</div>
+            @if (game.background_image == "" || game.background_image == null)
+            {
+                <img src="~/lib/Images/Untitled.png" style="max-height: 100%; max-width: 100%; grid-row: 1/4; grid-column: 2/3; justify-self: center; align-self: center; margin: 10px" />
+            }
+            else
+            {
+
+                <img src="@game.background_image" style="max-height: 100%; max-width: 100%; grid-row: 1/4; grid-column: 2/3; justify-self: center; align-self: center; margin: 10px" />
+            }
+
+
+            <div><b>Released:</b><br /> @game.released</div>
+
+        </a>
+    }
+
+</div>
+
